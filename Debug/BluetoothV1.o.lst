@@ -1,0 +1,394 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 3
+   4              		.fpu fpv4-sp-d16
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 6
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.thumb
+  15              		.file	"BluetoothV1.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.comm	commandsInitBt,800,4
+  20              		.comm	checkAnswersBt,56,4
+  21              		.section	.rodata
+  22              		.align	2
+  23              	.LC0:
+  24 0000 524F4B0D 		.ascii	"ROK\015\012\000"
+  24      0A00
+  25 0006 0000     		.align	2
+  26              	.LC1:
+  27 0008 4F4B0D0A 		.ascii	"OK\015\012\000"
+  27      00
+  28              		.section	.text.copyCheckAnswers,"ax",%progbits
+  29              		.align	2
+  30              		.global	copyCheckAnswers
+  31              		.thumb
+  32              		.thumb_func
+  34              	copyCheckAnswers:
+  35              	.LFB0:
+  36              		.file 1 "../BluetoothV1.c"
+   1:../BluetoothV1.c **** /*
+   2:../BluetoothV1.c ****  * BluetoothV1.c
+   3:../BluetoothV1.c ****  *
+   4:../BluetoothV1.c ****  *  Created on: 08-02-2016
+   5:../BluetoothV1.c ****  *      Author: Mateusz
+   6:../BluetoothV1.c ****  */
+   7:../BluetoothV1.c **** #include "BluetoothV1.h"
+   8:../BluetoothV1.c **** 
+   9:../BluetoothV1.c **** void copyCheckAnswers(void)
+  10:../BluetoothV1.c **** {
+  37              		.loc 1 10 0
+  38              		.cfi_startproc
+  39              		@ args = 0, pretend = 0, frame = 0
+  40              		@ frame_needed = 1, uses_anonymous_args = 0
+  41              		@ link register save eliminated.
+  42 0000 80B4     		push	{r7}
+  43              	.LCFI0:
+  44              		.cfi_def_cfa_offset 4
+  45              		.cfi_offset 7, -4
+  46 0002 00AF     		add	r7, sp, #0
+  47              	.LCFI1:
+  48              		.cfi_def_cfa_register 7
+  11:../BluetoothV1.c **** 	strcpy(checkAnswersBt[0], "ROK\r\n");
+  49              		.loc 1 11 0
+  50 0004 40F20003 		movw	r3, #:lower16:checkAnswersBt
+  51 0008 C0F20003 		movt	r3, #:upper16:checkAnswersBt
+  52 000c 40F20002 		movw	r2, #:lower16:.LC0
+  53 0010 C0F20002 		movt	r2, #:upper16:.LC0
+  54 0014 92E80300 		ldmia	r2, {r0, r1}
+  55 0018 1860     		str	r0, [r3, #0]
+  56 001a 03F10403 		add	r3, r3, #4
+  57 001e 1980     		strh	r1, [r3, #0]	@ movhi
+  12:../BluetoothV1.c **** 	strcpy(checkAnswersBt[1], "OK\r\n");
+  58              		.loc 1 12 0
+  59 0020 214A     		ldr	r2, .L2
+  60 0022 40F20003 		movw	r3, #:lower16:.LC1
+  61 0026 C0F20003 		movt	r3, #:upper16:.LC1
+  62 002a 1868     		ldr	r0, [r3, #0]	@ unaligned
+  63 002c 1060     		str	r0, [r2, #0]	@ unaligned
+  64 002e 1B79     		ldrb	r3, [r3, #4]
+  65 0030 1371     		strb	r3, [r2, #4]
+  13:../BluetoothV1.c **** 	strcpy(checkAnswersBt[2], "OK\r\n");
+  66              		.loc 1 13 0
+  67 0032 1E4A     		ldr	r2, .L2+4
+  68 0034 40F20003 		movw	r3, #:lower16:.LC1
+  69 0038 C0F20003 		movt	r3, #:upper16:.LC1
+  70 003c 1868     		ldr	r0, [r3, #0]	@ unaligned
+  71 003e 1060     		str	r0, [r2, #0]	@ unaligned
+  72 0040 1B79     		ldrb	r3, [r3, #4]
+  73 0042 1371     		strb	r3, [r2, #4]
+  14:../BluetoothV1.c **** 	strcpy(checkAnswersBt[3], "OK\r\n");
+  74              		.loc 1 14 0
+  75 0044 1A4A     		ldr	r2, .L2+8
+  76 0046 40F20003 		movw	r3, #:lower16:.LC1
+  77 004a C0F20003 		movt	r3, #:upper16:.LC1
+  78 004e 1868     		ldr	r0, [r3, #0]	@ unaligned
+  79 0050 1060     		str	r0, [r2, #0]	@ unaligned
+  80 0052 1B79     		ldrb	r3, [r3, #4]
+  81 0054 1371     		strb	r3, [r2, #4]
+  15:../BluetoothV1.c **** 	strcpy(checkAnswersBt[4], "OK\r\n");
+  82              		.loc 1 15 0
+  83 0056 174B     		ldr	r3, .L2+12
+  84 0058 40F20002 		movw	r2, #:lower16:.LC1
+  85 005c C0F20002 		movt	r2, #:upper16:.LC1
+  86 0060 92E80300 		ldmia	r2, {r0, r1}
+  87 0064 1860     		str	r0, [r3, #0]
+  88 0066 03F10403 		add	r3, r3, #4
+  89 006a 1970     		strb	r1, [r3, #0]
+  16:../BluetoothV1.c **** 	strcpy(checkAnswersBt[5], "OK\r\n");
+  90              		.loc 1 16 0
+  91 006c 124A     		ldr	r2, .L2+16
+  92 006e 40F20003 		movw	r3, #:lower16:.LC1
+  93 0072 C0F20003 		movt	r3, #:upper16:.LC1
+  94 0076 1868     		ldr	r0, [r3, #0]	@ unaligned
+  95 0078 1060     		str	r0, [r2, #0]	@ unaligned
+  96 007a 1B79     		ldrb	r3, [r3, #4]
+  97 007c 1371     		strb	r3, [r2, #4]
+  17:../BluetoothV1.c **** 	strcpy(checkAnswersBt[6], "OK\r\n");
+  98              		.loc 1 17 0
+  99 007e 0F4A     		ldr	r2, .L2+20
+ 100 0080 40F20003 		movw	r3, #:lower16:.LC1
+ 101 0084 C0F20003 		movt	r3, #:upper16:.LC1
+ 102 0088 1868     		ldr	r0, [r3, #0]	@ unaligned
+ 103 008a 1060     		str	r0, [r2, #0]	@ unaligned
+ 104 008c 1B79     		ldrb	r3, [r3, #4]
+ 105 008e 1371     		strb	r3, [r2, #4]
+  18:../BluetoothV1.c **** 	strcpy(checkAnswersBt[7], "OK\r\n");
+ 106              		.loc 1 18 0
+ 107 0090 0B4A     		ldr	r2, .L2+24
+ 108 0092 40F20003 		movw	r3, #:lower16:.LC1
+ 109 0096 C0F20003 		movt	r3, #:upper16:.LC1
+ 110 009a 1868     		ldr	r0, [r3, #0]	@ unaligned
+ 111 009c 1060     		str	r0, [r2, #0]	@ unaligned
+ 112 009e 1B79     		ldrb	r3, [r3, #4]
+ 113 00a0 1371     		strb	r3, [r2, #4]
+  19:../BluetoothV1.c **** }
+ 114              		.loc 1 19 0
+ 115 00a2 BD46     		mov	sp, r7
+ 116 00a4 80BC     		pop	{r7}
+ 117 00a6 7047     		bx	lr
+ 118              	.L3:
+ 119              		.align	2
+ 120              	.L2:
+ 121 00a8 07000000 		.word	checkAnswersBt+7
+ 122 00ac 0E000000 		.word	checkAnswersBt+14
+ 123 00b0 15000000 		.word	checkAnswersBt+21
+ 124 00b4 1C000000 		.word	checkAnswersBt+28
+ 125 00b8 23000000 		.word	checkAnswersBt+35
+ 126 00bc 2A000000 		.word	checkAnswersBt+42
+ 127 00c0 31000000 		.word	checkAnswersBt+49
+ 128              		.cfi_endproc
+ 129              	.LFE0:
+ 131              		.section	.rodata
+ 132 000d 000000   		.align	2
+ 133              	.LC2:
+ 134 0010 41542B4A 		.ascii	"AT+JRES\015\012\000"
+ 134      5245530D 
+ 134      0A00
+ 135 001a 0000     		.align	2
+ 136              	.LC3:
+ 137 001c 41542B4A 		.ascii	"AT+JSEC=4,1,04,1111,0,0\015\012\000"
+ 137      5345433D 
+ 137      342C312C 
+ 137      30342C31 
+ 137      3131312C 
+ 138 0036 0000     		.align	2
+ 139              	.LC4:
+ 140 0038 41542B4A 		.ascii	"AT+JSLN=07,Chmura1\015\012\000"
+ 140      534C4E3D 
+ 140      30372C43 
+ 140      686D7572 
+ 140      61310D0A 
+ 141 004d 000000   		.align	2
+ 142              	.LC5:
+ 143 0050 41542B4A 		.ascii	"AT+JRLS=32,13,0000110100001000800000805F9B34FB,Seri"
+ 143      524C533D 
+ 143      33322C31 
+ 143      332C3030 
+ 143      30303131 
+ 144 0083 616C2070 		.ascii	"al port 1,01,C20200\015\012\000"
+ 144      6F727420 
+ 144      312C3031 
+ 144      2C433230 
+ 144      3230300D 
+ 145 0099 000000   		.align	2
+ 146              	.LC6:
+ 147 009c 41542B4A 		.ascii	"AT+JAAC=1\015\012\000"
+ 147      4141433D 
+ 147      310D0A00 
+ 148              		.align	2
+ 149              	.LC7:
+ 150 00a8 41542B4A 		.ascii	"AT+JDIS=3\015\012\000"
+ 150      4449533D 
+ 150      330D0A00 
+ 151              		.align	2
+ 152              	.LC8:
+ 153 00b4 41542B4A 		.ascii	"AT+JGPC=FFFD,0000,0000,0000,FFFD\015\012\000"
+ 153      4750433D 
+ 153      46464644 
+ 153      2C303030 
+ 153      302C3030 
+ 154 00d7 00       		.align	2
+ 155              	.LC9:
+ 156 00d8 41542B4A 		.ascii	"AT+JSCR\015\012\000"
+ 156      5343520D 
+ 156      0A00
+ 157 00e2 0000     		.section	.text.copyCommands,"ax",%progbits
+ 158              		.align	2
+ 159              		.global	copyCommands
+ 160              		.thumb
+ 161              		.thumb_func
+ 163              	copyCommands:
+ 164              	.LFB1:
+  20:../BluetoothV1.c **** 
+  21:../BluetoothV1.c **** void copyCommands(void)
+  22:../BluetoothV1.c **** {
+ 165              		.loc 1 22 0
+ 166              		.cfi_startproc
+ 167              		@ args = 0, pretend = 0, frame = 0
+ 168              		@ frame_needed = 1, uses_anonymous_args = 0
+ 169 0000 B0B5     		push	{r4, r5, r7, lr}
+ 170              	.LCFI2:
+ 171              		.cfi_def_cfa_offset 16
+ 172              		.cfi_offset 4, -16
+ 173              		.cfi_offset 5, -12
+ 174              		.cfi_offset 7, -8
+ 175              		.cfi_offset 14, -4
+ 176 0002 00AF     		add	r7, sp, #0
+ 177              	.LCFI3:
+ 178              		.cfi_def_cfa_register 7
+  23:../BluetoothV1.c **** 	strcpy(commandsInitBt[0], "AT+JRES\r\n");
+ 179              		.loc 1 23 0
+ 180 0004 40F20003 		movw	r3, #:lower16:commandsInitBt
+ 181 0008 C0F20003 		movt	r3, #:upper16:commandsInitBt
+ 182 000c 40F20002 		movw	r2, #:lower16:.LC2
+ 183 0010 C0F20002 		movt	r2, #:upper16:.LC2
+ 184 0014 07CA     		ldmia	r2, {r0, r1, r2}
+ 185 0016 03C3     		stmia	r3!, {r0, r1}
+ 186 0018 1A80     		strh	r2, [r3, #0]	@ movhi
+  24:../BluetoothV1.c **** 	strcpy(commandsInitBt[1], "AT+JSEC=4,1,04,1111,0,0\r\n");
+ 187              		.loc 1 24 0
+ 188 001a 2D4A     		ldr	r2, .L5
+ 189 001c 40F20003 		movw	r3, #:lower16:.LC3
+ 190 0020 C0F20003 		movt	r3, #:upper16:.LC3
+ 191 0024 1446     		mov	r4, r2
+ 192 0026 1D46     		mov	r5, r3
+ 193 0028 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 194 002a 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 195 002c 95E80700 		ldmia	r5, {r0, r1, r2}
+ 196 0030 03C4     		stmia	r4!, {r0, r1}
+ 197 0032 2280     		strh	r2, [r4, #0]	@ movhi
+  25:../BluetoothV1.c **** 	strcpy(commandsInitBt[2], "AT+JSLN=07,Chmura1\r\n");
+ 198              		.loc 1 25 0
+ 199 0034 274A     		ldr	r2, .L5+4
+ 200 0036 40F20003 		movw	r3, #:lower16:.LC4
+ 201 003a C0F20003 		movt	r3, #:upper16:.LC4
+ 202 003e 1446     		mov	r4, r2
+ 203 0040 1D46     		mov	r5, r3
+ 204 0042 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 205 0044 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 206 0046 95E80300 		ldmia	r5, {r0, r1}
+ 207 004a 2060     		str	r0, [r4, #0]
+ 208 004c 04F10404 		add	r4, r4, #4
+ 209 0050 2170     		strb	r1, [r4, #0]
+  26:../BluetoothV1.c **** 	strcpy(commandsInitBt[3], "AT+JRLS=32,13,0000110100001000800000805F9B34FB,Serial port 1,01,C20200\
+ 210              		.loc 1 26 0
+ 211 0052 214A     		ldr	r2, .L5+8
+ 212 0054 40F20003 		movw	r3, #:lower16:.LC5
+ 213 0058 C0F20003 		movt	r3, #:upper16:.LC5
+ 214 005c 1146     		mov	r1, r2
+ 215 005e 1A46     		mov	r2, r3
+ 216 0060 4FF04903 		mov	r3, #73
+ 217 0064 0846     		mov	r0, r1
+ 218 0066 1146     		mov	r1, r2
+ 219 0068 1A46     		mov	r2, r3
+ 220 006a FFF7FEFF 		bl	memcpy
+  27:../BluetoothV1.c **** 	strcpy(commandsInitBt[4], "AT+JAAC=1\r\n");
+ 221              		.loc 1 27 0
+ 222 006e 1B4A     		ldr	r2, .L5+12
+ 223 0070 40F20003 		movw	r3, #:lower16:.LC6
+ 224 0074 C0F20003 		movt	r3, #:upper16:.LC6
+ 225 0078 1446     		mov	r4, r2
+ 226 007a 93E80700 		ldmia	r3, {r0, r1, r2}
+ 227 007e 84E80700 		stmia	r4, {r0, r1, r2}
+  28:../BluetoothV1.c **** 	strcpy(commandsInitBt[5], "AT+JDIS=3\r\n");
+ 228              		.loc 1 28 0
+ 229 0082 174A     		ldr	r2, .L5+16
+ 230 0084 40F20003 		movw	r3, #:lower16:.LC7
+ 231 0088 C0F20003 		movt	r3, #:upper16:.LC7
+ 232 008c 1446     		mov	r4, r2
+ 233 008e 93E80700 		ldmia	r3, {r0, r1, r2}
+ 234 0092 84E80700 		stmia	r4, {r0, r1, r2}
+  29:../BluetoothV1.c **** 	strcpy(commandsInitBt[6], "AT+JGPC=FFFD,0000,0000,0000,FFFD\r\n");
+ 235              		.loc 1 29 0
+ 236 0096 134A     		ldr	r2, .L5+20
+ 237 0098 40F20003 		movw	r3, #:lower16:.LC8
+ 238 009c C0F20003 		movt	r3, #:upper16:.LC8
+ 239 00a0 1446     		mov	r4, r2
+ 240 00a2 1D46     		mov	r5, r3
+ 241 00a4 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 242 00a6 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 243 00a8 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 244 00aa 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 245 00ac 2B68     		ldr	r3, [r5, #0]
+ 246 00ae 1A46     		mov	r2, r3	@ movhi
+ 247 00b0 2280     		strh	r2, [r4, #0]	@ movhi
+ 248 00b2 04F10204 		add	r4, r4, #2
+ 249 00b6 4FEA1343 		lsr	r3, r3, #16
+ 250 00ba 2370     		strb	r3, [r4, #0]
+  30:../BluetoothV1.c **** 	strcpy(commandsInitBt[7], "AT+JSCR\r\n");
+ 251              		.loc 1 30 0
+ 252 00bc 0A4B     		ldr	r3, .L5+24
+ 253 00be 40F20002 		movw	r2, #:lower16:.LC9
+ 254 00c2 C0F20002 		movt	r2, #:upper16:.LC9
+ 255 00c6 07CA     		ldmia	r2, {r0, r1, r2}
+ 256 00c8 03C3     		stmia	r3!, {r0, r1}
+ 257 00ca 1A80     		strh	r2, [r3, #0]	@ movhi
+  31:../BluetoothV1.c **** }
+ 258              		.loc 1 31 0
+ 259 00cc B0BD     		pop	{r4, r5, r7, pc}
+ 260              	.L6:
+ 261 00ce 00BF     		.align	2
+ 262              	.L5:
+ 263 00d0 64000000 		.word	commandsInitBt+100
+ 264 00d4 C8000000 		.word	commandsInitBt+200
+ 265 00d8 2C010000 		.word	commandsInitBt+300
+ 266 00dc 90010000 		.word	commandsInitBt+400
+ 267 00e0 F4010000 		.word	commandsInitBt+500
+ 268 00e4 58020000 		.word	commandsInitBt+600
+ 269 00e8 BC020000 		.word	commandsInitBt+700
+ 270              		.cfi_endproc
+ 271              	.LFE1:
+ 273              		.section	.text.initCommandsAndAnswers,"ax",%progbits
+ 274              		.align	2
+ 275              		.global	initCommandsAndAnswers
+ 276              		.thumb
+ 277              		.thumb_func
+ 279              	initCommandsAndAnswers:
+ 280              	.LFB2:
+  32:../BluetoothV1.c **** 
+  33:../BluetoothV1.c **** void initCommandsAndAnswers(void)
+  34:../BluetoothV1.c **** {
+ 281              		.loc 1 34 0
+ 282              		.cfi_startproc
+ 283              		@ args = 0, pretend = 0, frame = 0
+ 284              		@ frame_needed = 1, uses_anonymous_args = 0
+ 285 0000 80B5     		push	{r7, lr}
+ 286              	.LCFI4:
+ 287              		.cfi_def_cfa_offset 8
+ 288              		.cfi_offset 7, -8
+ 289              		.cfi_offset 14, -4
+ 290 0002 00AF     		add	r7, sp, #0
+ 291              	.LCFI5:
+ 292              		.cfi_def_cfa_register 7
+  35:../BluetoothV1.c **** 	copyCheckAnswers();
+ 293              		.loc 1 35 0
+ 294 0004 FFF7FEFF 		bl	copyCheckAnswers
+  36:../BluetoothV1.c **** 	copyCommands();
+ 295              		.loc 1 36 0
+ 296 0008 FFF7FEFF 		bl	copyCommands
+  37:../BluetoothV1.c **** }
+ 297              		.loc 1 37 0
+ 298 000c 80BD     		pop	{r7, pc}
+ 299              		.cfi_endproc
+ 300              	.LFE2:
+ 302 000e 00BF     		.text
+ 303              	.Letext0:
+ 304              		.file 2 "<built-in>"
+ 305              		.file 3 "../BluetoothV1.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 BluetoothV1.c
+                            *COM*:00000320 commandsInitBt
+                            *COM*:00000038 checkAnswersBt
+C:\Users\Mateusz\AppData\Local\Temp\ccLNVHji.s:22     .rodata:00000000 $d
+C:\Users\Mateusz\AppData\Local\Temp\ccLNVHji.s:23     .rodata:00000000 .LC0
+C:\Users\Mateusz\AppData\Local\Temp\ccLNVHji.s:26     .rodata:00000008 .LC1
+C:\Users\Mateusz\AppData\Local\Temp\ccLNVHji.s:29     .text.copyCheckAnswers:00000000 $t
+C:\Users\Mateusz\AppData\Local\Temp\ccLNVHji.s:34     .text.copyCheckAnswers:00000000 copyCheckAnswers
+C:\Users\Mateusz\AppData\Local\Temp\ccLNVHji.s:121    .text.copyCheckAnswers:000000a8 $d
+C:\Users\Mateusz\AppData\Local\Temp\ccLNVHji.s:133    .rodata:00000010 .LC2
+C:\Users\Mateusz\AppData\Local\Temp\ccLNVHji.s:136    .rodata:0000001c .LC3
+C:\Users\Mateusz\AppData\Local\Temp\ccLNVHji.s:139    .rodata:00000038 .LC4
+C:\Users\Mateusz\AppData\Local\Temp\ccLNVHji.s:142    .rodata:00000050 .LC5
+C:\Users\Mateusz\AppData\Local\Temp\ccLNVHji.s:146    .rodata:0000009c .LC6
+C:\Users\Mateusz\AppData\Local\Temp\ccLNVHji.s:149    .rodata:000000a8 .LC7
+C:\Users\Mateusz\AppData\Local\Temp\ccLNVHji.s:152    .rodata:000000b4 .LC8
+C:\Users\Mateusz\AppData\Local\Temp\ccLNVHji.s:155    .rodata:000000d8 .LC9
+C:\Users\Mateusz\AppData\Local\Temp\ccLNVHji.s:158    .text.copyCommands:00000000 $t
+C:\Users\Mateusz\AppData\Local\Temp\ccLNVHji.s:163    .text.copyCommands:00000000 copyCommands
+C:\Users\Mateusz\AppData\Local\Temp\ccLNVHji.s:263    .text.copyCommands:000000d0 $d
+C:\Users\Mateusz\AppData\Local\Temp\ccLNVHji.s:274    .text.initCommandsAndAnswers:00000000 $t
+C:\Users\Mateusz\AppData\Local\Temp\ccLNVHji.s:279    .text.initCommandsAndAnswers:00000000 initCommandsAndAnswers
+                     .debug_frame:00000010 $d
+                           .group:00000000 wm4.1.35166846b5321d4273ad8c4248893ac3
+
+UNDEFINED SYMBOLS
+memcpy
